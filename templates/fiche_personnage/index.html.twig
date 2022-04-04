@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FichePersonnage index{% endblock %}
+
+{% block body %}
+    <h1>FichePersonnage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_personnage</th>
+                <th>Prenom_personnage</th>
+                <th>Age_personnage</th>
+                <th>Taille_personnage</th>
+                <th>Poids_personnage</th>
+                <th>Yeux_personnage</th>
+                <th>Cheveux_personnage</th>
+                <th>Constitution_personnage</th>
+                <th>Force_personnage</th>
+                <th>Perception_personnage</th>
+                <th>Intelligence_personnage</th>
+                <th>Charisme_personnage</th>
+                <th>Fuite_personnage</th>
+                <th>Dexterite_personnage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_personnage in fiche_personnages %}
+            <tr>
+                <td>{{ fiche_personnage.id }}</td>
+                <td>{{ fiche_personnage.nomPersonnage }}</td>
+                <td>{{ fiche_personnage.prenomPersonnage }}</td>
+                <td>{{ fiche_personnage.agePersonnage }}</td>
+                <td>{{ fiche_personnage.taillePersonnage }}</td>
+                <td>{{ fiche_personnage.poidsPersonnage }}</td>
+                <td>{{ fiche_personnage.yeuxPersonnage }}</td>
+                <td>{{ fiche_personnage.cheveuxPersonnage }}</td>
+                <td>{{ fiche_personnage.constitutionPersonnage }}</td>
+                <td>{{ fiche_personnage.forcePersonnage }}</td>
+                <td>{{ fiche_personnage.perceptionPersonnage }}</td>
+                <td>{{ fiche_personnage.intelligencePersonnage }}</td>
+                <td>{{ fiche_personnage.charismePersonnage }}</td>
+                <td>{{ fiche_personnage.fuitePersonnage }}</td>
+                <td>{{ fiche_personnage.dexteritePersonnage }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_personnage_show', {'id': fiche_personnage.id}) }}">show</a>
+                    <a href="{{ path('app_fiche_personnage_edit', {'id': fiche_personnage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_personnage_new') }}">Create new</a>
+{% endblock %}

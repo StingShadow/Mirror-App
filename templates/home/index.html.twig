@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="container has-background-black mb-5" style="opacity: 0.9;">
+
+    <header class="header mt-5">
+        <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+            ACCUEIL <span style="margin-left: 40%;">Bienvenue de l'autre coté du miroir</span>
+        </h1>
+    </header>
+    <div class="separator"></div>
+
+    <section class="section has-text-white mb-5 pb-5">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-10">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 mt-2" style="background-color: #474747;">
+                            <p class="is-size-2 has-text-white is-uppercase">Bienvenue</p>
+                            <div class="separator"></div>
+                            <p>Bienvenue dans le site du monde miroir. Un endroit ayant pour but de
+                                rassembler les divers informations sur le livre Mirror's world. Une encyclopédie
+                                officiel, il sert de dépot d'informations en tout genres ainsi que d'images
+                            </p></br>
+                            <p>Mirror's world est un livre ou s'entremélent de multiples univers découlant
+                                de la terre que nous connaissons tous. Un homme au commande depuis l'égypte antique
+                                ainsi qu'un miroir magique, le créateur comme il s'est auto proclamé s'est juré qu'il
+                                créerait le monde parfait grace au miroir qu'il a lui meme créer. Ainsi, 16 univers ont
+                                été créer depuis la fabrication du miroir des ombre et depuis ce jour, les expériences
+                                ne se sont toujours pas avérés payante mais le 16 éme monde porte déja des présage prometteur.
+                            </p>
+                        </div>
+                        <div class="column is-12 mt-2" style="background-color: #474747;">
+                            <p class="is-size-2 has-text-white is-uppercase">Jeu de rôle</p>
+                            <div class="separator"></div>
+                            <p>L'univers de mirror est utilisé pour du jeu de role sur un serveur discord. Un jeu de role
+                                textuel utilisant des statistique ainsi qu'un systéme simpliste de dé. Ici, les joueurs peuvent
+                                créer leur fiches avec le générateur disponible dans la section jeu de role. Une aide afin de
+                                connaitre comment fonctionne le jeu de role ainsi que les statistiques de l'univers est également
+                                disponible. Dans ce but l'armurerie est ouverte, les armes utilisé dans le jeu pour renforcé votre
+                                personnages.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2 has-text-white mt-2 mb-2" style="background-color: #3a3939;">
+                    <p class="is-size-2 is-uppercase">Aide</p>
+                    <div class="separator"></div>
+                    <p>Bienvenue sur le wiki du monde miroir, n'hésitez pas a vous <a style="color:red;" href="/register">inscrire</a> pour pouvoir participer aux forum
+                        et ouvrir de nouvelle discussion. Si vous souhaitez contacter l'écrivain, envoyer un <a style="color:red;">mail</a> et nous vous répondrons
+                        sous peu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="container has-background-black mb-5" style="opacity: 0.9;">
+
+    <header class="header mt-5">
+        <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+            Forum <span style="margin-left: 38%;">Participons ensemble a une discussion</span>
+        </h1>
+    </header>
+    <div class="separator"></div>
+
+    <section class="section has-text-white mb-5 pb-5">
+        {% for theme in themes %}
+            <p>Theme : {{ theme.titreTheme }}</p>
+            <p>Description : {{ theme.descriptionTheme }}</p>
+    </br>
+        {% endfor %}
+
+    </section>
+</div>
+{% endblock %}

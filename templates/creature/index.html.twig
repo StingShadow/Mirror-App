@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creature index{% endblock %}
+
+{% block body %}
+    <h1>Creature index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_creature</th>
+                <th>Description_creature</th>
+                <th>Habitat_creature</th>
+                <th>Regime_creature</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for creature in creatures %}
+            <tr>
+                <td>{{ creature.id }}</td>
+                <td>{{ creature.nomCreature }}</td>
+                <td>{{ creature.descriptionCreature }}</td>
+                <td>{{ creature.habitatCreature }}</td>
+                <td>{{ creature.regimeCreature }}</td>
+                <td>
+                    <a href="{{ path('app_creature_show', {'id': creature.id}) }}">show</a>
+                    <a href="{{ path('app_creature_edit', {'id': creature.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_creature_new') }}">Create new</a>
+{% endblock %}

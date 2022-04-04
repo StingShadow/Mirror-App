@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FichePersonnage{% endblock %}
+
+{% block body %}
+    <h1>Create new FichePersonnage</h1>
+
+    {{ include('fiche_personnage/_form.html.twig') }}
+
+    <a href="{{ path('app_fiche_personnage_index') }}">back to list</a>
+{% endblock %}

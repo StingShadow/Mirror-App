@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="container has-background-black mb-5" style="opacity: 0.9; height: 720px;">
+
+        <header class="header mt-5">
+            <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+                Gestion <span style="margin-left: 63%;">Dashboard ADMIN</span>
+            </h1>
+        </header>
+        <div class="separator"></div>
+
+        <section class="section has-text-white mb-5 pb-5">
+
+            <figure class="snip1477 is-128x128">
+                <img src={{ asset('/CSS/IMG/creature.jpg') }} alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">Créature</h2>
+                        <h4>Gérer</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Gérer une créature</p>
+                </figcaption>
+                <a href="/creature/"></a>
+            </figure>
+
+            <figure class="snip1477 is-128x128">
+                <img src={{ asset('/CSS/IMG/race.jpg') }} alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">Race</h2>
+                        <h4>Gérer</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Gérer les races de l'univers</p>
+                </figcaption>
+                <a href="/race/"></a>
+            </figure>
+
+            <figure class="snip1477 is-128x128">
+                <img src={{ asset('/CSS/IMG/user.jpg') }} alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">Utilisateur</h2>
+                        <h4>Gérer</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Gérer les utilisateurs de l'app</p>
+                </figcaption>
+                <a href="/utilisateur/"></a>
+            </figure>
+
+            <figure class="snip1477 is-128x128">
+                <img src={{ asset('/CSS/IMG/classe.jpg') }} alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">Classe</h2>
+                        <h4>Gérer</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Gérer les classes</p>
+                </figcaption>
+                <a href="/classe/"></a>
+            </figure>
+
+            <figure class="snip1477 is-128x128">
+                <img src={{ asset('/CSS/IMG/pays.jpg') }} alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">Pays</h2>
+                        <h4>Gérer</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Gérer les pays</p>
+                </figcaption>
+                <a href="/pays/"></a>
+            </figure>
+
+            <figure class="snip1477 is-128x128">
+                <img src={{ asset('/CSS/IMG/ville.jpg') }} alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">Ville</h2>
+                        <h4>Gérer</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Gérer les villes</p>
+                </figcaption>
+                <a href="/ville/"></a>
+            </figure>
+
+
+
+        </section>
+
+
+
+    </div>
+
+{% endblock %}

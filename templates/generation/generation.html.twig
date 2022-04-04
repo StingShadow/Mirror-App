@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FicheController!{% endblock %}
+
+{% block body %}
+
+<div class="container has-background-black" style="opacity: 0.9;">
+		
+			<header class="header mt-5">
+			 <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+			 Inscription <span style="margin-left: 250px;">Bienvenue de l'autre coté du miroir</span>
+			 </h1>
+			</header>
+
+			<div class="separator"></div>
+			<div class="container">
+				<div class="column is-full">
+				</div>
+			</div>
+		<section class="section has-text-white pt-0 mb-5">
+			<div class="container">
+				<div class="columns">
+					<div class="column is-full">
+					<p> Bienvenue voyageur ! Vous vous aprétez a vous inscrire a un monde fantastique ! Ceci vous permettra
+					de rejoindre des débats dans le forum ! Vous pourrez également en démarrez et créer vos propres fiche de personnages ! n'hésitez plus.</p> </br>
+                    {{ form(FicheForm) }}
+
+					</div>
+				</div>
+			</div>
+			
+			
+		</section>
+</div>
+
+
+{% endblock %}
