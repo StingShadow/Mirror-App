@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Race index{% endblock %}
+
+{% block body %}
+    <div class="container has-background-black mb-5" style="opacity: 0.9;">
+
+        <header class="header mt-5">
+            <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+                Sources de pouvoir <span style="margin-left: 61%;"><a href="/sourcePouvoir/new">Ajouter</a></span>
+            </h1>
+        </header>
+        <div class="separator"></div>
+
+        {% for source in source_pouvoirs %}
+
+            <figure class="snip1477 is-128x" style="padding-bottom: 80px; padding-top: 58px;">
+
+                <img src="{{ source.src }}" alt="sample38" />
+                <div class="title-1">
+                    <div>
+                        <h2 class="has-text-white has-text-weight-bold">{{ source.nomSource }}</h2>
+                        <h4>Détail</h4>
+                    </div>
+                </div>
+                <figcaption>
+                    <p>Découvrez en plus sur les sources de {{ source.nomSource}}</p>
+                </figcaption>
+                <a href="/sourcePouvoir/{{source.id}}"></a>
+            </figure>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+{% endblock %}

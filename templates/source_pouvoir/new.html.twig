@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SourcePouvoir{% endblock %}
+
+{% block body %}
+    <h1>Create new SourcePouvoir</h1>
+
+    {{ include('source_pouvoir/_form.html.twig') }}
+
+    <a href="{{ path('app_source_pouvoir_index') }}">back to list</a>
+{% endblock %}

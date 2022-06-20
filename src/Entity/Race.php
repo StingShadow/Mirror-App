@@ -19,7 +19,17 @@ class Race
     private $nomrace;
 
     #[ORM\Column(type: 'text')]
-    private $descriptionrace;
+    private $histoire;
+
+    #[ORM\Column(type: 'text')]
+    private $caratere;
+
+    #[ORM\Column(type: 'text')]
+    private $caracteristique_physique;
+
+    #[ORM\Column(type: 'text')]
+    private $croyances;
+
 
     #[ORM\Column(type: 'text')]
     private $capaciterace;
@@ -30,10 +40,16 @@ class Race
     #[ORM\OneToMany(mappedBy: 'race', targetEntity: FichePersonnage::class)]
     private $fichePersonnages;
 
+    #[ORM\ManyToMany(targetEntity: SourcePouvoir::class, inversedBy: 'races')]
+    private $sourcePouvoir;
+
+
+
     public function __construct()
     {
         $this->creatures = new ArrayCollection();
         $this->fichePersonnages = new ArrayCollection();
+        $this->sourcePouvoir = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -60,17 +76,64 @@ class Race
     /**
      * @return mixed
      */
-    public function getDescriptionrace()
+    public function getHistoire()
     {
-        return $this->descriptionrace;
+        return $this->histoire;
     }
 
     /**
-     * @param mixed $descriptionrace
+     * @param mixed $histoire
      */
-    public function setDescriptionrace($descriptionrace): void
+    public function setHistoire($histoire): void
     {
-        $this->descriptionrace = $descriptionrace;
+        $this->histoire = $histoire;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCaratere()
+    {
+        return $this->caratere;
+    }
+
+    /**
+     * @param mixed $caratere
+     */
+    public function setCaratere($caratere): void
+    {
+        $this->caratere = $caratere;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCaracteristiquePhysique()
+    {
+        return $this->caracteristique_physique;
+    }
+
+    /**
+     * @param mixed $caracteristique_physique
+     */
+    public function setCaracteristiquePhysique($caracteristique_physique): void
+    {
+        $this->caracteristique_physique = $caracteristique_physique;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCroyances()
+    {
+        return $this->croyances;
+    }
+
+    /**
+     * @param mixed $croyances
+     */
+    public function setCroyances($croyances): void
+    {
+        $this->croyances = $croyances;
     }
 
     /**
@@ -88,6 +151,7 @@ class Race
     {
         $this->capaciterace = $capaciterace;
     }
+
 
 
     /**
@@ -153,6 +217,30 @@ class Race
     public function __toString(): string
     {
         return "";
+    }
+
+    /**
+     * @return Collection<int, SourcePouvoir>
+     */
+    public function getSourcePouvoir(): Collection
+    {
+        return $this->sourcePouvoir;
+    }
+
+    public function addSourcePouvoir(SourcePouvoir $sourcePouvoir): self
+    {
+        if (!$this->sourcePouvoir->contains($sourcePouvoir)) {
+            $this->sourcePouvoir[] = $sourcePouvoir;
+        }
+
+        return $this;
+    }
+
+    public function removeSourcePouvoir(SourcePouvoir $sourcePouvoir): self
+    {
+        $this->sourcePouvoir->removeElement($sourcePouvoir);
+
+        return $this;
     }
 
 

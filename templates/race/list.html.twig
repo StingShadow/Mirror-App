@@ -7,7 +7,7 @@
 
     <header class="header mt-5">
         <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
-            Races <span style="margin-left: 63%;">Listing Races</span>
+            Races <span style="margin-left: 79%;"><a href="/race/new">Ajouter</a></span>
         </h1>
     </header>
     <div class="separator"></div>
@@ -16,7 +16,7 @@
 
             <figure class="snip1477 is-128x128">
 
-                <img src="/CSS/IMG/{{race.nomRace}}.jpg" alt="sample38" />
+                <img src="/CSS/IMG/race/{{race.nomRace}}/{{race.nomRace}}.jpg" alt="sample38" />
                 <div class="title-1">
                     <div>
                         <h2 class="has-text-white has-text-weight-bold">{{ race.nomRace }}</h2>
@@ -31,6 +31,28 @@
         {% endfor %}
         </tbody>
     </table>
+
+
+    <table id="example" class="table is-striped" style="width: 100%">
+         <thead>
+            <tr>
+                <th>Nom</th>
+            </tr>
+         </thead>
+        <tbody>
+        {% for race in races %}
+            <tr>
+                <td>{{race.nomRace}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Nom</th>
+            </tr>
+        </tfoot>
+    </table>
+
 </div>
 
 {% endblock %}
