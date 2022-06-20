@@ -16,10 +16,10 @@ class Religion
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom_religion;
+    private $nomreligion;
 
     #[ORM\Column(type: 'text')]
-    private $description_religion;
+    private $descriptionreligion;
 
     #[ORM\OneToMany(mappedBy: 'religion', targetEntity: FichePersonnage::class)]
     private $fichePersonnages;
@@ -34,26 +34,26 @@ class Religion
         return $this->id;
     }
 
-    public function getNomReligion(): ?string
+    public function getNomreligion(): ?string
     {
-        return $this->nom_religion;
+        return $this->nomreligion;
     }
 
-    public function setNomReligion(string $nom_religion): self
+    public function setNomreligion(string $nomreligion): self
     {
-        $this->nom_religion = $nom_religion;
+        $this->nomreligion = $nomreligion;
 
         return $this;
     }
 
-    public function getDescriptionReligion(): ?string
+    public function getDescriptionreligion(): ?string
     {
-        return $this->description_religion;
+        return $this->descriptionreligion;
     }
 
-    public function setDescriptionReligion(string $description_religion): self
+    public function setDescriptionreligion(string $descriptionreligion): self
     {
-        $this->description_religion = $description_religion;
+        $this->descriptionreligion = $descriptionreligion;
 
         return $this;
     }

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objet{% endblock %}
+
+{% block body %}
+    <h1>Objet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ objet.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_objet</th>
+                <td>{{ objet.nomObjet }}</td>
+            </tr>
+            <tr>
+                <th>Description_objet</th>
+                <td>{{ objet.descriptionObjet }}</td>
+            </tr>
+            <tr>
+                <th>Effet_objet</th>
+                <td>{{ objet.effetObjet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_objet_index') }}">back to list</a>
+
+    <a href="{{ path('app_objet_edit', {'id': objet.id}) }}">edit</a>
+
+    {{ include('objet/_delete_form.html.twig') }}
+{% endblock %}

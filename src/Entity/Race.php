@@ -16,13 +16,13 @@ class Race
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom_race;
+    private $nomrace;
 
     #[ORM\Column(type: 'text')]
-    private $description_race;
+    private $descriptionrace;
 
     #[ORM\Column(type: 'text')]
-    private $capacite_race;
+    private $capaciterace;
 
     #[ORM\OneToMany(mappedBy: 'race', targetEntity: Creature::class)]
     private $creatures;
@@ -41,41 +41,54 @@ class Race
         return $this->id;
     }
 
-    public function getNomRace(): ?string
+    /**
+     * @return mixed
+     */
+    public function getNomrace()
     {
-        return $this->nom_race;
+        return $this->nomrace;
     }
 
-    public function setNomRace(string $nom_race): self
+    /**
+     * @param mixed $nomrace
+     */
+    public function setNomrace($nomrace): void
     {
-        $this->nom_race = $nom_race;
-
-        return $this;
+        $this->nomrace = $nomrace;
     }
 
-    public function getDescriptionRace(): ?string
+    /**
+     * @return mixed
+     */
+    public function getDescriptionrace()
     {
-        return $this->description_race;
+        return $this->descriptionrace;
     }
 
-    public function setDescriptionRace(string $description_race): self
+    /**
+     * @param mixed $descriptionrace
+     */
+    public function setDescriptionrace($descriptionrace): void
     {
-        $this->description_race = $description_race;
-
-        return $this;
+        $this->descriptionrace = $descriptionrace;
     }
 
-    public function getCapaciteRace(): ?string
+    /**
+     * @return mixed
+     */
+    public function getCapaciterace()
     {
-        return $this->capacite_race;
+        return $this->capaciterace;
     }
 
-    public function setCapaciteRace(string $capacite_race): self
+    /**
+     * @param mixed $capaciterace
+     */
+    public function setCapaciterace($capaciterace): void
     {
-        $this->capacite_race = $capacite_race;
-
-        return $this;
+        $this->capaciterace = $capaciterace;
     }
+
 
     /**
      * @return Collection<int, Creature>
@@ -136,4 +149,11 @@ class Race
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return "";
+    }
+
+
 }

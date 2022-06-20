@@ -5,57 +5,82 @@
 
 		<div class="container has-background-black mb-5" style="opacity: 0.9;">
 
-
-			<section class="section has-text-white mb-5 pb-5 mt-5">
+			<header class="header mt-5">
+				<h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+					Profil <span style="margin-left: 40%;">Bienvenue de l'autre coté du miroir</span>
+				</h1>
+			</header>
+			<section class="section has-text-white mb-5 pb-5">
 				<div class="container">
 					<div class="columns">
-						<div class="column is-9">
-							<div class="columns is-multiline">
-								<div class="column is-12 mt-2" style="background-color: #474747;">
-
-
-
-								</div>
-								<div class="column is-12 mt-2" style="background-color: #474747;">
-									{% for fiche in fiches %}
-									<figure class="image is-128x128" style="float: left">
-										<img class="is-flex-wrap-wrap" src="/CSS/IMG/userprofil.jpg">
-									</figure>
-									<div style="padding-left: 140px">
-										<p class="is-size-3">Bienvenue sur votre profil, {{ app.user.pseudo }}</p>
-										<br>
-										<p>Email enregistrée : {{ app.user.email }}</p>
-										<p>Vous êtes en grande partie un {{ app.user.denomination }}</p>
+						<div class="column is-9 has-text-white mt-2 mb-2" style="background-color: #3a3939; margin-right: 15px;">
+                            {% for fiche in fiches %}
+							<h1 class="is-size-3 ml-3 has-text-info-dark">{{ fiche.nom }} {{ fiche.prenom }}</h1>
+								<div class="columns">
+									<div class="column">
+										<p>Personnage de sexe {{ fiche.sexe }} agés de {{ fiche.age }} ans, haut de {{ fiche.taille }} cm
+											pour un poids de {{ fiche.poids }} kg. Ce personnage possède les yeux {{ fiche.yeux }} ainsi que les
+											cheveux {{ fiche.cheveux }}. Combatter aux cotés du {{ fiche.classe.nomClasse }} {{ fiche.prenom }} {{ fiche.nom}}
+											née dans le pays du {{ fiche.pays.nomPays }} et plus précisément dans la ville de {{ fiche.ville.nomVille}}</p>
 									</div>
-									{% endfor %}
+									<div class="column">
+										<p class="has-text-centered">Caractéristique du personnage :</p>
+										<table class="table is-bordered is-striped is-narrow is-fullwidth">
+											<thead>
+											<tr>
+												<th><abbr title="Constitution">Const</abbr></th>
+												<th><abbr title="Force">For</abbr></th>
+												<th><abbr title="Perception">Per</abbr></th>
+												<th><abbr title="Intelligence">Intel</abbr></th>
+												<th><abbr title="Sagesse">Sage</abbr></th>
+												<th><abbr title="Charisme">Cha</abbr></th>
+												<th><abbr title="Fuite">Fui</abbr></th>
+												<th><abbr title="Dexterite">Dext</abbr></th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<th>{{ fiche.constitution }}</th>
+												<th>{{ fiche.forcePersonnage}}</th>
+												<th>{{ fiche.perception }}</th>
+												<th>{{ fiche.intelligence }}</th>
+												<th>{{ fiche.sagesse }}</th>
+												<th>{{ fiche.charisme }}</th>
+												<th>{{ fiche.fuite }}</th>
+												<th>{{ fiche.dexterite }}</th>
+											</tr>
+											</tbody>
+										</table>
+
+									</div>
 								</div>
-							</div>
+								<div class="has-text-centered mb-3">
+								<button onclick="window.location.href = '/senddoc/{{fiche.prenom}}{{fiche.nom}}'" class="button is-info">
+
+								<span>Téléchargement fiche associé</span>
+
+								<span class="icon is-small">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </span>
+								</button>
+
+								</div>
+
+								<div class="separator"></div>
+							{% endfor %}
 						</div>
 						<div class="column is-3 has-text-white mt-2 mb-2" style="background-color: #3a3939;">
 							<p class="is-size-6 is-uppercase">Vos créations de campagne :</p>
 							<div class="separator"></div>
 							<ul>
 								{% for campagne in campagnes %}
-								<li>{{ campagne.titreCampagne }}</li>
+									<li><a href="/campagne/{{campagne.id}}">{{ campagne.titreCampagne }}</a></li>
 								{% endfor %}
 							</ul>
 						</div>
 					</div>
 				</div>
 			</section>
-
-
-			
-			
-
-    <div class="has-text-centered">
-    {% for message in app.flashes('danger') %}
-       						<div class="notification is-danger">
-                                  {{ message }}
-							</div>
-                        {% endfor %}
-                        <a class="has-text-white" href={{ asset('/senddoc') }}>Recevoir la fiche de personnage associé</a>
-   </div>
 		</div>
 		
 {% endblock %}

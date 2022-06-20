@@ -24,7 +24,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $pseudo;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private $roles = ['ROLE_USER','ROLE_ADMIN'];
 
     #[ORM\Column(type: 'string')]
     private $password;
@@ -112,7 +112,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_USER, ROLE_ADMIN';
 
         return array_unique($roles);
     }

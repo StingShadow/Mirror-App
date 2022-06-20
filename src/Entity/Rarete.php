@@ -14,21 +14,21 @@ class Rarete
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom_rarete;
+    private $nomrarete;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNomRarete(): ?string
+    public function getNomrarete(): ?string
     {
-        return $this->nom_rarete;
+        return $this->nomrarete;
     }
 
-    public function setNomRarete(string $nom_rarete): self
+    public function setNomrarete(string $nomrarete): self
     {
-        $this->nom_rarete = $nom_rarete;
+        $this->nomrarete = $nomrarete;
 
         return $this;
     }

@@ -16,10 +16,10 @@ class Pays
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom_pays;
+    private $nompays;
 
     #[ORM\Column(type: 'text')]
-    private $description_pays;
+    private $descriptionpays;
 
     #[ORM\OneToMany(mappedBy: 'pays', targetEntity: Ville::class)]
     private $villes;
@@ -38,26 +38,26 @@ class Pays
         return $this->id;
     }
 
-    public function getNomPays(): ?string
+    public function getNompays(): ?string
     {
-        return $this->nom_pays;
+        return $this->nompays;
     }
 
-    public function setNomPays(string $nom_pays): self
+    public function setNompays(string $nompays): self
     {
-        $this->nom_pays = $nom_pays;
+        $this->nompays = $nompays;
 
         return $this;
     }
 
-    public function getDescriptionPays(): ?string
+    public function getDescriptionpays(): ?string
     {
-        return $this->description_pays;
+        return $this->descriptionpays;
     }
 
-    public function setDescriptionPays(string $description_pays): self
+    public function setDescriptionpays(string $descriptionpays): self
     {
-        $this->description_pays = $description_pays;
+        $this->descriptionpays = $descriptionpays;
 
         return $this;
     }

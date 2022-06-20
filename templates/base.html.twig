@@ -125,7 +125,7 @@
                         Bibliothéque
                     </a>
                     <div class="navbar-dropdown">
-                <a class="navbar-item">
+                <a class="navbar-item" href="/race/">
                     Race
                 </a>
                 <a class="navbar-item">
@@ -169,11 +169,12 @@
                             Génération de fiche
                         </a>
                         {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
                         <hr class="navbar-divider">
-
                         <a class="navbar-item" href="/admin/crud">
                             Administration
                         </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

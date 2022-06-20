@@ -45,6 +45,18 @@ class FichePersonnageRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByUtilisateur($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.utilisateur = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return FichePersonnage[] Returns an array of FichePersonnage objects
     //  */

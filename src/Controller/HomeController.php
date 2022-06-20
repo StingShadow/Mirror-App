@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Campagne;
 use App\Repository\CampagneRepository;
+use App\Repository\FichePersonnageRepository;
 use App\Repository\MessageRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\UtilisateurRepository;
@@ -24,12 +25,14 @@ class HomeController extends AbstractController
     }
 
     #[Route('/profil', name: 'app_profil')]
-    public function profil(CampagneRepository $campagneRepository, UtilisateurRepository $user): Response
+    public function profil(CampagneRepository $campagneRepository, UtilisateurRepository $user, FichePersonnageRepository $fiche): Response
     {
         $utilisateur = $user->findOneByMail($this->getUser()->getUserIdentifier());
         $campagneList = $campagneRepository->findByUtilisateur($utilisateur);
+        $ficheList = $fiche->findByUtilisateur($utilisateur);
         return $this->render('profil.html.twig', [
             'campagnes' => $campagneList,
+            'fiches' => $ficheList
         ]);
     }
 }

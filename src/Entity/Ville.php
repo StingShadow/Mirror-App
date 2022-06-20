@@ -16,10 +16,10 @@ class Ville
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom_ville;
+    private $nomville;
 
     #[ORM\Column(type: 'text')]
-    private $description_ville;
+    private $descriptionville;
 
     #[ORM\ManyToOne(targetEntity: Pays::class, inversedBy: 'villes')]
     private $Pays;
@@ -37,26 +37,26 @@ class Ville
         return $this->id;
     }
 
-    public function getNomVille(): ?string
+    public function getNomville(): ?string
     {
-        return $this->nom_ville;
+        return $this->nomville;
     }
 
-    public function setNomVille(string $nom_ville): self
+    public function setNomville(string $nomville): self
     {
-        $this->nom_ville = $nom_ville;
+        $this->nomville = $nomville;
 
         return $this;
     }
 
-    public function getDescriptionVille(): ?string
+    public function getDescriptionville(): ?string
     {
-        return $this->description_ville;
+        return $this->descriptionville;
     }
 
-    public function setDescriptionVille(string $description_ville): self
+    public function setDescriptionville(string $descriptionville): self
     {
-        $this->description_ville = $description_ville;
+        $this->descriptionville = $descriptionville;
 
         return $this;
     }

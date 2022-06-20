@@ -25,7 +25,7 @@ class Creature
     #[ORM\Column(type: 'string', length: 255)]
     private $regime_creature;
 
-    #[ORM\ManyToOne(targetEntity: race::class, inversedBy: 'creatures')]
+    #[ORM\ManyToOne(targetEntity: Race::class, inversedBy: 'creatures')]
     private $race;
 
     public function getId(): ?int

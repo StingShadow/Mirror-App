@@ -40,13 +40,17 @@ class FichePersonnage
     private $constitution;
 
     #[ORM\Column(type: 'integer')]
-    private $force;
+    private $force_personnage;
 
     #[ORM\Column(type: 'integer')]
     private $perception;
 
     #[ORM\Column(type: 'integer')]
     private $intelligence;
+
+    #[ORM\Column(type: 'integer')]
+    private $sagesse;
+
 
     #[ORM\Column(type: 'integer')]
     private $charisme;
@@ -56,6 +60,9 @@ class FichePersonnage
 
     #[ORM\Column(type: 'integer')]
     private $dexterite;
+
+    #[ORM\Column(type: 'string')]
+    private $sexe;
 
     #[ORM\ManyToMany(targetEntity: Objet::class, inversedBy: 'fichePersonnages')]
     private $objets;
@@ -77,6 +84,38 @@ class FichePersonnage
 
     #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'fichePersonnages')]
     private $utilisateur;
+
+    /**
+     * @return mixed
+     */
+    public function getSagesse()
+    {
+        return $this->sagesse;
+    }
+
+    /**
+     * @param mixed $sagesse
+     */
+    public function setSagesse($sagesse): void
+    {
+        $this->sagesse = $sagesse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * @param mixed $sexe
+     */
+    public function setSexe($sexe): void
+    {
+        $this->sexe = $sexe;
+    }
 
     public function __construct()
     {
@@ -184,14 +223,14 @@ class FichePersonnage
         return $this;
     }
 
-    public function getForce(): ?int
+    public function getForcePersonnage(): ?int
     {
-        return $this->force;
+        return $this->force_personnage;
     }
 
-    public function setForce(int $force): self
+    public function setForcePersonnage(int $force_personnage): self
     {
-        $this->force = $force;
+        $this->force_personnage = $force_personnage;
 
         return $this;
     }

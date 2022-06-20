@@ -16,10 +16,10 @@ class Classe
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom_classe;
+    private $nomclasse;
 
     #[ORM\Column(type: 'text')]
-    private $description_classe;
+    private $descriptionclasse;
 
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: FichePersonnage::class)]
     private $fichePersonnages;
@@ -34,26 +34,26 @@ class Classe
         return $this->id;
     }
 
-    public function getNomClasse(): ?string
+    public function getNomclasse(): ?string
     {
-        return $this->nom_classe;
+        return $this->nomclasse;
     }
 
-    public function setNomClasse(string $nom_classe): self
+    public function setNomclasse(string $nomclasse): self
     {
-        $this->nom_classe = $nom_classe;
+        $this->nomclasse = $nomclasse;
 
         return $this;
     }
 
-    public function getDescriptionClasse(): ?string
+    public function getDescriptionclasse(): ?string
     {
-        return $this->description_classe;
+        return $this->descriptionclasse;
     }
 
-    public function setDescriptionClasse(string $description_classe): self
+    public function setDescriptionclasse(string $descriptionclasse): self
     {
-        $this->description_classe = $description_classe;
+        $this->descriptionclasse = $descriptionclasse;
 
         return $this;
     }
@@ -87,4 +87,11 @@ class Classe
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return "";
+    }
+
+
 }

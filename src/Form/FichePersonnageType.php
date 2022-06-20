@@ -13,6 +13,7 @@ use App\Entity\Race;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,9 +31,10 @@ class FichePersonnageType extends AbstractType
             ->add('yeux')
             ->add('cheveux')
             ->add('constitution')
-            ->add('force')
+            ->add('force_personnage')
             ->add('perception')
             ->add('intelligence')
+            ->add('sagesse')
             ->add('charisme')
             ->add('fuite')
             ->add('dexterite')
@@ -54,13 +56,16 @@ class FichePersonnageType extends AbstractType
                 'class' => Race::class,
                 'choice_label' => 'nom_race',
             ])
-            ->add('utilisateur', EntityType::class,[
-                'class' => Utilisateur::class,
-                'choice_label' => 'pseudo',
-            ])
             ->add('pays', EntityType::class, [
                 'class' => Pays::class,
                 'choice_label' => 'nom_pays',
+            ])
+            ->add('sexe', ChoiceType::class, [
+                'choices'  => [
+                    'Homme' => "Homme",
+                    'Femme' => "Femme",
+                    'Non Spécifié' => "Non Spécifié",
+                ]
             ])
             ->add('Valider', SubmitType::class)
         ;

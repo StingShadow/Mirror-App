@@ -22,14 +22,26 @@ class GenerationController extends AbstractController
         $form->handleRequest($req);
 
         if ($form->isSubmitted()) {
-            $fichePersonnageRepository->add($Ficheperso);
-            $utilisateur = $user->findOneByMail($this->getUser()->getUserIdentifier());
 
+
+            $utilisateur = $user->findOneByMail($this->getUser()->getUserIdentifier());
+            $Ficheperso->setUtilisateur($utilisateur);
             $donnees = $form->getData();
             $file = "content.xml";
 
 
-            $data = ["nom" => $donnees->getNom(),"race" => $donnees->getPrenom()];
+           $fichePersonnageRepository->add($Ficheperso);
+
+
+            $data = [ "prenom" => $donnees->getPrenom(),"race" => $donnees->getRace()->getNomRace(),"nom" => $donnees->getNom(),
+                "sexe" => $donnees->getSexe(), "age" => $donnees->getAge(), "taille" => $donnees->getTaille(),
+                "poids" => $donnees->getPoids(), "yeux" => $donnees->getYeux(), "cheveux" => $donnees->getCheveux(),
+                "classe" => $donnees->getClasse()->getNomClasse(), "pays" => $donnees->getPays()->getNomPays(),  "ville" => $donnees->getVille()->getNomVille(),
+                "religion" => $donnees->getReligion()->getNomReligion(),"constitution" => $donnees->getConstitution(),"force" => $donnees->getForcePersonnage(),
+                "perception" => $donnees->getPerception(),"intelligence" => $donnees->getIntelligence(),"charisme" => $donnees->getCharisme(), "fuite" => $donnees->getFuite(),
+                "dexterite" => $donnees->getDexterite(), "sagesse" => $donnees->getSagesse()];
+
+
             $zip = new ZipArchive;
             $res = $zip->open('fiche de personnage template.odt');
 
@@ -43,8 +55,9 @@ class GenerationController extends AbstractController
 
 
 
-            $recherche = array("nomform","prenomform", "raceform", "sexeform", "ageform", "tailleform", "poidsform", "yeuxform", "cheveuxform",
-                "classeform","rangform","paysform","villeform","diviniteform");
+            $recherche = array("prenomform","nomform", "raceform", "sexeform", "ageform", "tailleform", "poidsform", "yeuxform", "cheveuxform",
+                "classeform","rangform","paysform","villeform","religionform","constitutionform","forceform","perception","intelligenceform"
+            ,"charismeform","fuiteform","dexteriteform","sagesseform");
             $str = file_get_contents($file);
 
 
@@ -77,7 +90,7 @@ class GenerationController extends AbstractController
             $zip->addFile("content.xml");
             $zip->close();
             unlink('content.xml');
-            rename("fiche copier.odt", "fiche/fiche de personnage"." ".$utilisateur->getPseudo().".odt");
+            rename("fiche copier.odt", "fiche/fiche de personnage"." ".$utilisateur->getPseudo()."-".$donnees->getPrenom().$donnees->getNom().".odt");
 
 
         }
@@ -87,11 +100,11 @@ class GenerationController extends AbstractController
         ]);
     }
 
-    #[Route('/senddoc', name: 'sendoc')]
-    public function sendResponse(Request $req, UtilisateurRepository $user)
+    #[Route('/senddoc/{string}', name: 'sendoc')]
+    public function sendResponse(Request $req, UtilisateurRepository $user, String $string)
     {
         $utilisateur = $user->findOneByMail($this->getUser()->getUserIdentifier());
-        $filename = "fiche/fiche de personnage"." ".$utilisateur->getPseudo().".odt";
+        $filename = "fiche/fiche de personnage"." ".$utilisateur->getPseudo()."-".$string.".odt";
 
         if(file_exists($filename)){
 
@@ -120,7 +133,7 @@ class GenerationController extends AbstractController
             $this->addFlash('danger', 'Aucune fiche associé a ce profil');
 
             // On retourne sur la page du profil
-            return $this->redirectToRoute('profil');
+            return $this->redirectToRoute('app_profil');
         }
     }
 }
