@@ -19,7 +19,8 @@ class HomeController extends AbstractController
     {
 
         return $this->render('home/index.html.twig', [
-            'themes' => $themeRepository->findAll(),
+            'themes' => $themeRepository->findAllBetweem1et4(),
+            'themeSup' => $themeRepository->findAllBetweem5et8(),
             'controller_name' => 'HomeController',
         ]);
     }

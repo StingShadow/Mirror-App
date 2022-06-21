@@ -45,22 +45,33 @@ class ThemeRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Theme[] Returns an array of Theme objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Theme[] Returns an array of Theme objects
+      */
+    public function findAllBetweem1et4()
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
+            ->where('t.id <= 4' )
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    /**
+     * @return Theme[] Returns an array of Theme objects
+     */
+    public function findAllBetweem5et8()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.id > 4' )
+            ->andWhere('t.id <= 10')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Theme

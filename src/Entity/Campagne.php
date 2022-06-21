@@ -27,6 +27,7 @@ class Campagne
     #[ORM\OneToMany(mappedBy: 'campagne', targetEntity: Theme::class)]
     private $themes;
 
+
     public function __construct()
     {
         $this->themes = new ArrayCollection();
@@ -101,5 +102,13 @@ class Campagne
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Theme>
+     */
+    public function getTheme(): Collection
+    {
+        return $this->theme;
     }
 }

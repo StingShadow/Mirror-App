@@ -6,6 +6,7 @@ use App\Repository\FichePersonnageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FichePersonnageRepository::class)]
 class FichePersonnage
@@ -36,28 +37,84 @@ class FichePersonnage
     #[ORM\Column(type: 'string', length: 255)]
     private $cheveux;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $constitution;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $force_personnage;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $perception;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $intelligence;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $sagesse;
 
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $charisme;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $fuite;
 
+    /**
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      notInRangeMessage = "La valeur doit être entre 1 et 10",
+     * )
+     */
     #[ORM\Column(type: 'integer')]
     private $dexterite;
 
