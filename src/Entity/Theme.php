@@ -31,6 +31,9 @@ class Theme
     #[ORM\ManyToOne(targetEntity: Campagne::class, inversedBy: 'themes')]
     private $campagne;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $photo;
+
 
     public function __construct()
     {
@@ -116,6 +119,18 @@ class Theme
     public function setCampagne(?campagne $campagne): self
     {
         $this->campagne = $campagne;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }

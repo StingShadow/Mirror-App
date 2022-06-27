@@ -22,7 +22,7 @@ class Race
     private $histoire;
 
     #[ORM\Column(type: 'text')]
-    private $caratere;
+    private $caractere;
 
     #[ORM\Column(type: 'text')]
     private $caracteristique_physique;
@@ -92,17 +92,17 @@ class Race
     /**
      * @return mixed
      */
-    public function getCaratere()
+    public function getCaractere()
     {
-        return $this->caratere;
+        return $this->caractere;
     }
 
     /**
-     * @param mixed $caratere
+     * @param mixed $caractere
      */
-    public function setCaratere($caratere): void
+    public function setCaractere($caractere): void
     {
-        $this->caratere = $caratere;
+        $this->caractere = $caractere;
     }
 
     /**

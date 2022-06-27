@@ -68,18 +68,21 @@
         <div class="columns">
             {% for theme in themes %}
             <div class="column">
-                <div class="box has-background-grey-light">
+                <div class="box has-text-white" style="background-color: #3a3939;">
+                    
                     <article class="media">
+                    {% if theme.photo %}
                         <div class="media-left">
                             <figure class="image is-64x64">
-                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                <img src="./CSS/IMG/theme/{{theme.photo}}" alt="Image">
                             </figure>
                         </div>
+                        {% endif %}
                         <div class="media-content">
                             <div class="content">
                                 <p>
                                     <strong>{{ theme.titreTheme }}</strong>
-                                    <br>
+                                    <div class="separator"></div>
                                     {{ theme.descriptionTheme }}
                                 </p>
                             </div>
@@ -95,18 +98,21 @@
         <div class="columns">
             {% for theme in themeSup %}
                 <div class="column">
-                    <div class="box has-background-grey-light">
+                    <div class="box has-text-white" style="background-color: #3a3939;">
                         <article class="media">
+                             {% if theme.photo %}
                             <div class="media-left">
                                 <figure class="image is-64x64">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                    <img src="./CSS/IMG/theme/{{theme.photo}}" alt="Image">
                                 </figure>
                             </div>
+                        {% endif %}
                             <div class="media-content">
                                 <div class="content">
                                     <p>
                                         <strong>{{ theme.titreTheme }}</strong>
-                                        <br>
+                                        <div class="separator"></div>
+                                        
                                         {{ theme.descriptionTheme }}
                                     </p>
                                 </div>

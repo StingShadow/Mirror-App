@@ -41,7 +41,13 @@ class RaceController extends AbstractController
     #[Route('/{id}', name: 'app_race_show', methods: ['GET'])]
     public function show(Race $race): Response
     {
+        $histoires = explode("|",$race->getHistoire());
+        $physique = explode("|", $race->getCaracteristiquePhysique());
+        $croyance = explode("|", $race->getCroyances());
         return $this->render('race/show.html.twig', [
+            'croyances' => $croyance,
+            'physiques' => $physique,
+            'histoires' => $histoires,
             'race' => $race,
         ]);
     }

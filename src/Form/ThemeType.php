@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ThemeType extends AbstractType
 {
@@ -25,6 +27,30 @@ class ThemeType extends AbstractType
                 'class' => Campagne::class,
                 'choice_label' => 'titre_campagne',
                 'required'   => false,
+            ])
+            ->add('photo', FileType::class, [
+                'label' => 'Photo de profil du theme (Format PNG, JPG, JPEG)',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez envoyer une image sous format JPG,JPEG ou PNG',
+                    ])
+                ],
             ])
         ;
     }

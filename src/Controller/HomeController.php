@@ -17,11 +17,20 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(ThemeRepository $themeRepository): Response
     {
+        $themes = $themeRepository->findAllDESC10();
+        $theme1 = [];
+        $i = 0;
+        $array1 = array_slice($themes, 0, 4);
+        $array2 = array_slice($themes, 4, 8);
+        foreach ($themes as $theme) {
+            array_push($theme1,$theme);
+        };
+
 
         return $this->render('home/index.html.twig', [
-            'themes' => $themeRepository->findAllBetweem1et4(),
-            'themeSup' => $themeRepository->findAllBetweem5et8(),
             'controller_name' => 'HomeController',
+            'themes' => $array1,
+            'themeSup' => $array2
         ]);
     }
 

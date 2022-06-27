@@ -1,34 +1,93 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Race{% endblock %}
-
 {% block body %}
-    <h1>Race</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ race.id }}</td>
-            </tr>
-            <tr>
-                <th>Nomrace</th>
-                <td>{{ race.nomrace }}</td>
-            </tr>
-            <tr>
-                <th>Descriptionrace</th>
-                <td>{{ race.descriptionrace }}</td>
-            </tr>
-            <tr>
-                <th>Capaciterace</th>
-                <td>{{ race.capaciterace }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_race_index') }}">back to list</a>
+<div class="container has-background-black mt-5" style="opacity: 0.9;">
+			<div class="container">
+				<div class="column is-full">
+			<h1 class="has-text-white is-size-2 is-uppercase">Les {{race.nomRace}}</h1>
+			<div class="separator"></div>
+				</div>
+			</div>
+		<section class="section has-text-white pt-0 mb-5">
+			<div class="container">
+				<div class="columns">
+					<div class="column is-9">
+					<h1 class="has-text-white is-size-2 is-uppercase pd-5" style="margin-top: -20px;">Histoire :</h1>
+					<div class="separator"></div>
+					 {% for histoire in histoires %}
+						<p>{{histoire}}</p></br>
+					 {% endfor %}
+					</div>
+					
+					<div class="column is-3 has-text-white mt-2 mb-2" style="background-color: #3a3939;">
+                        <figure class="image is-3by5 mt-2">
+  							<div class="slideshow-container">
+      							<div class="mySlides fade">
+        							<div class="numbertext">1 / 3</div>
+        							<img src='/CSS/IMG/race/{{race.nomRace}}/{{race.nomRace}}1.jpeg'>
+        								<div class="text">{{race.nomRace}}</div>
+      							</div>
+      							<div class="mySlides fade">
+        							<div class="numbertext">2 / 3</div>
+        							<img src='/CSS/IMG/race/{{race.nomRace}}/{{race.nomRace}}2.jpeg'>
+        							<div class="text">{{race.nomRace}}</div>
+      							</div>
+      							<div class="mySlides fade">
+       								<div class="numbertext">3 / 3</div>
+        							<img src='/CSS/IMG/race/{{race.nomRace}}/{{race.nomRace}}3.jpeg'>
+        							<div class="text">{{race.nomRace}}</div>
+      							</div>
+      								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      								<a class="next" onclick="plusSlides(1)">&#10095;</a> 
+    					</div>
+    								<br>
+    					<div style="text-align:center">
+      						<span class="dot" onclick="currentSlide(1)"></span> 
+      						<span class="dot" onclick="currentSlide(2)"></span> 
+     						<span class="dot" onclick="currentSlide(3)"></span> 
+    					</div>
+						</figure>
+					</div>
+					
+				</div>
+				<h1 class="has-text-white is-size-2 is-uppercase">Caractéristiques physiques :</h1>
+						<div class="separator"></div>
+						{% for physique in physiques %}
+							<p>{{physique}}</p></br>
+					 	{% endfor %}
+							
+							
+					
+					<h1 class="has-text-white is-size-2 is-uppercase">Caractère :</h1>
+						<div class="separator"></div>
+							<p>{{race.caractere}}</p> </br>
+				   <h1 class="has-text-white is-size-2 is-uppercase">Croyances :</h1>
+						<div class="separator"></div>
+						 {% for croyance in croyances %}
+						<p>{{croyance}}</p></br>
+					 {% endfor %}
+				   
+				   <h1 class="has-text-white is-size-2 is-uppercase">Source d'énergie :</h1>
+						<div class="separator"></div>
+						<p>Les Adamas possédent une source d'énergo impur en eux, Leur source peuvent appartenir a tous les domaines.</p>
+			
+			</div>
+			
+			
+			
+		</section>
+		
+		
 
-    <a href="{{ path('app_race_edit', {'id': race.id}) }}">edit</a>
+</div>
 
-    {{ include('race/_delete_form.html.twig') }}
+
+					
+
 {% endblock %}
+
+
+
+
