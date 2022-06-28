@@ -32,7 +32,7 @@
 --------------------------------------------------------------*/
 :root{
   --white: #ffffff;
-  --grey: #999999;
+  --grey: #ff0000;
   --black: #000000;
   --color-1: #554698;
   --color-2: #d30518;
@@ -66,6 +66,19 @@
     margin-left: 0;
     margin-right:  0;
 }
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #fff;
+}
+
+.dataTables_wrapper .dataTables_length select {
+  border: 1px solid #e54c4c;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: transparent;
+  padding: 4px;
+}
+
 
 /* Mostly: http://ryanfait.com/sticky-footer/ */
 

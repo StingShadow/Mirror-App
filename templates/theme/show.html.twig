@@ -16,29 +16,36 @@
 
    <article class="message ml-5 mr-5">
   <div class="message-header">
-    <p class="is-uppercase">{{message.utilisateur.pseudo}}</p>
+    <p class="is-uppercase">{{message.utilisateur.pseudo}} le {{message.createdAt|date("d/m/Y h:i")}}</p>
   </div>
   <div class="message-body">
    <p>{{message.message}}<p>
 
+  
+    <form style="margin-left: 80%" method="post" action="{{ path('app_message_delete', {'id': message.id}) }}" onsubmit="return confirm('Souhaitez vous réellement supprimer votre message ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+        <button class="button">
+            <span class="icon">
+      <i class="fab fa-github"></i>
+    </span>
+    <span>Supprimer</span>
+  </button>
    <a href="/message/{{message.id}}/edit" class="button">
          <span class="icon has-text-info">
              <i class="far fa-eye"></i>
          </span>
         <span>Edition</span>
     </a>
-    <form method="post" action="{{ path('app_theme_delete', {'id': message.id}) }}" onsubmit="return confirm('Souhaitez vous réellement supprimer votre message ?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
-        <button class="button">
-            <span class="icon">
-      <i class="fab fa-github"></i>
-    </span>
-    <span>Suprimer</span>
-  </button>
 </form>
   </div>
 </article>
  {% endfor %}
+
+ {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn" type="submit">{{ button_label|default('Valider') }}</button>
+{{ form_end(form) }}
+
 </div>
 
    

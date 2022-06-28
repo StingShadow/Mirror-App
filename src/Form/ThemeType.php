@@ -11,18 +11,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ThemeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre_theme')
-            ->add('description_theme')
-            ->add('utilisateur', EntityType::class,[
-                'class' => Utilisateur::class,
-                'choice_label' => 'pseudo',
+            ->add('titre_theme', TextType::class, [
             ])
+            ->add('description_theme')
             ->add('campagne', EntityType::class,[
                 'class' => Campagne::class,
                 'choice_label' => 'titre_campagne',

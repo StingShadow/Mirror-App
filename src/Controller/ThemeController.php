@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use App\Entity\Message;
+use App\Form\MessageType;
+use App\Repository\UtilisateurRepository;
 
 #[Route('/theme')]
 class ThemeController extends AbstractController
@@ -25,13 +28,15 @@ class ThemeController extends AbstractController
     }
 
     #[Route('/new', name: 'app_theme_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ThemeRepository $themeRepository, SluggerInterface $slugger): Response
+    public function new(Request $request, ThemeRepository $themeRepository, SluggerInterface $slugger, UtilisateurRepository $user): Response
     {
         $theme = new Theme();
         $form = $this->createForm(ThemeType::class, $theme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $utilisateur = $user->findOneByMail($this->getUser()->getUserIdentifier());
+            $theme->setUtilisateur($utilisateur);
             /** @var UploadedFile $photoFile */
             $photoFile = $form->get('photo')->getData();
 
@@ -68,13 +73,28 @@ class ThemeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_theme_show', methods: ['GET'])]
-    public function show(Theme $theme, MessageRepository $messageRepository): Response
+    #[Route('/{id}', name: 'app_theme_show', methods: ['GET', 'POST'])]
+    public function show(Theme $theme, MessageRepository $messageRepository, Request $request, UtilisateurRepository $user): Response
     {
+        $message = new Message();
+        $form = $this->createForm(MessageType::class, $message);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $utilisateur = $user->findOneByMail($this->getUser()->getUserIdentifier());
+            $message->setTheme($theme);
+            $message->setUtilisateur($utilisateur);
+
+            $messageRepository->add($message);
+            return $this->redirectToRoute('app_theme_show', ['id' => $theme->getId()], Response::HTTP_SEE_OTHER);
+        }
+
         $messages = $messageRepository->findByTheme($theme);
-        return $this->render('theme/show.html.twig', [
+        return $this->renderForm('theme/show.html.twig', [
             'theme' => $theme,
             'messages' => $messages,
+            'form' => $form
         ]);
     }
 

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArmurerieController!{% endblock %}
+
+{% block body %}
+ <div class="container has-background-black mb-5" style="opacity: 0.9;">
+
+    <header class="header mt-5">
+        <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+            Forum <span style="margin-left: 57%;"><a href="/theme/new">Ouvrir une discussion</a></span>
+        </h1>
+    </header>
+    <div class="separator"></div>
+
+    <table id="armurerie" class="display table is-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011-04-25</td>
+                <td>$320,800</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+{% endblock %}
