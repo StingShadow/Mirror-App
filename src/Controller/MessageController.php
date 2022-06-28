@@ -55,7 +55,7 @@ class MessageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $messageRepository->add($message);
-            return $this->redirectToRoute('app_message_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_theme_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('message/edit.html.twig', [
@@ -71,6 +71,6 @@ class MessageController extends AbstractController
             $messageRepository->remove($message);
         }
 
-        return $this->redirectToRoute('app_message_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_theme_index', [], Response::HTTP_SEE_OTHER);
     }
 }

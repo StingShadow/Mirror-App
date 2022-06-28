@@ -1,34 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SourcePouvoir{% endblock %}
-
 {% block body %}
-    <h1>SourcePouvoir</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ source_pouvoir.id }}</td>
-            </tr>
-            <tr>
-                <th>NomSource</th>
-                <td>{{ source_pouvoir.nomSource }}</td>
-            </tr>
-            <tr>
-                <th>Caracteristique</th>
-                <td>{{ source_pouvoir.caracteristique }}</td>
-            </tr>
-            <tr>
-                <th>Src</th>
-                <td>{{ source_pouvoir.src }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_source_pouvoir_index') }}">back to list</a>
+<div class="container has-background-black mt-5" style="opacity: 0.9;">
+			<div class="container">
+				<div class="column is-full">
+			<h1 class="has-text-white is-size-2 is-uppercase">Les sources de {{source.nomSource}}</h1>
+			<div class="separator"></div>
+				</div>
+			</div>
+		<section class="section has-text-white pt-0 mb-5">
+			<div class="container">
+				<div class="columns">
+					<div class="column is-9">
+					<h1 class="has-text-white is-size-2 is-uppercase pd-5" style="margin-top: -20px;">Caractèristique :</h1>
+					<div class="separator"></div>
+						<p>{{source.Caracteristique}}</p></br>
+					</div>
+					<div class="column is-3 ">
+						<img src="{{ source.src }}" class="image is-128x128" style="margin-left: 100px;" alt="sample38" />
+					</div>
+					
+			</div>
+			
+			
+			
+		</section>
+		
+		
 
-    <a href="{{ path('app_source_pouvoir_edit', {'id': source_pouvoir.id}) }}">edit</a>
+</div>
 
-    {{ include('source_pouvoir/_delete_form.html.twig') }}
+
+					
+
 {% endblock %}
+
+
+
+

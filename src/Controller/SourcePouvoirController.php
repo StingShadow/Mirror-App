@@ -43,7 +43,7 @@ class SourcePouvoirController extends AbstractController
     public function show(SourcePouvoir $sourcePouvoir): Response
     {
         return $this->render('source_pouvoir/show.html.twig', [
-            'source_pouvoir' => $sourcePouvoir,
+            'source' => $sourcePouvoir,
         ]);
     }
 

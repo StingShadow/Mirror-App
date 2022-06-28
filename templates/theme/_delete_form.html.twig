@@ -1,4 +1,10 @@
 <form method="post" action="{{ path('app_theme_delete', {'id': theme.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ theme.id) }}">
-    <button class="btn">Delete</button>
+    <p class="buttons">
+  <button class="button">
+    <span class="icon">
+      <i class="fab fa-github"></i>
+    </span>
+    <span>Suprimer</span>
+  </button>
 </form>

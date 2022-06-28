@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-
-    <link href={{ asset('/CSS/bulma.min.css') }} rel="stylesheet">
+     <link href={{ asset('/CSS/bulma.min.css') }} rel="stylesheet">
     <link href={{ asset('/CSS/template.css') }} rel="stylesheet">
+   
+    
 
 
   <script src="https://kit.fontawesome.com/218868dcf5.js" crossorigin="anonymous"></script>
@@ -86,6 +87,7 @@
 </head>
 <body>
 {% block navbar %}
+<div class="page-wrap">
     <nav class="navbar has-background-black is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
@@ -116,7 +118,7 @@
                         <a class="navbar-item">
                             Carte
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item"  href="/sourcePouvoir">
                             Source Pouvoir
                         </a>
                         <a class="navbar-item">
@@ -169,7 +171,7 @@
                         <a class="navbar-item">
                             Armurerie
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="/theme/">
                             Forum
                         </a>
                         {% if is_granted('ROLE_USER') %}
@@ -233,8 +235,8 @@
 
 {% block body %}{% endblock %}
 
-{% block footer%}
-    <footer class="footer has-background-black" style="padding-top: 0px;padding-bottom: 0px;">
+{% block footer %}
+    <footer class="footer has-background-black site-footer"  style="padding-top: 0px;padding-bottom: 0px;">
         <div class="container">
             <div class="level">
                 <div class="level-left">
@@ -259,6 +261,6 @@
 
 
 
-
+</div>
 </body>
 </html>

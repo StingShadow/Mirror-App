@@ -3,38 +3,54 @@
 {% block title %}Theme index{% endblock %}
 
 {% block body %}
-    <h1>Theme index</h1>
+   <div class="container has-background-black mb-5" style="opacity: 0.9;">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre_theme</th>
-                <th>Description_theme</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for theme in themes %}
-            <tr>
-                <td>{{ theme.id }}</td>
-                <td>{{ theme.titreTheme }}</td>
-                <td>{{ theme.descriptionTheme }}</td>
+    <header class="header mt-5">
+        <h1 class="title has-color-grey text-shadows is-uppercase is-size-3 pt-3 pl-4 pb-3">
+            Forum <span style="margin-left: 57%;"><a href="/theme/new">Ouvrir une discussion</a></span>
+        </h1>
+    </header>
+    <div class="separator"></div>
 
+    <div class="columns is-multiline mt-5 mb-5">
+   {% for theme in themes %}
+  <div class="column is-3">
+    <div class="card has-background-grey">
+      <div class="card-image">
+        <figure class="image is-4by3">
+        {% if theme.photo %}
+          <img src="/CSS/IMG/theme/{{theme.photo}}" alt="Placeholder image">
+          {% else %}
+            <img src="/CSS/IMG/logo.png" alt="Placeholder image">
+          {% endif %}
+        </figure>
+      </div>
+      <div class="card-content">
 
+          <p class="title is-3 has-text-centered pb-2">{{theme.titreTheme}}</p>
+        <div class="content">
 
-                <td>
-                    <a href="{{ path('app_theme_show', {'id': theme.id}) }}">show</a>
-                    <a href="{{ path('app_theme_edit', {'id': theme.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+          {{theme.descriptionTheme}}
+          <br>
+        </div>
+        <div class="level ">
+          <div class="level-item">
+            <div>
+              <a href="/theme/{{theme.id}}" class="button">
+                <span class="icon has-text-info">
+                  <i class="far fa-eye"></i>
+                </span>
+                <span>Accéder a la discussion</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
 
-    <a href="{{ path('app_theme_new') }}">Create new</a>
+    
 {% endblock %}

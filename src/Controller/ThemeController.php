@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Theme;
 use App\Form\ThemeType;
+use App\Repository\MessageRepository;
 use App\Repository\ThemeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -68,10 +69,12 @@ class ThemeController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_theme_show', methods: ['GET'])]
-    public function show(Theme $theme): Response
+    public function show(Theme $theme, MessageRepository $messageRepository): Response
     {
+        $messages = $messageRepository->findByTheme($theme);
         return $this->render('theme/show.html.twig', [
             'theme' => $theme,
+            'messages' => $messages,
         ]);
     }
 

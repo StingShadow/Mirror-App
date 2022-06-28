@@ -67,15 +67,30 @@
     margin-right:  0;
 }
 
+/* Mostly: http://ryanfait.com/sticky-footer/ */
 
-.footer {
-
-	bottom:0;
-	width: 100%;
-	padding-top: 0%;
-	padding-bottom: 0%;
-	
+* {
+	margin: 0;
 }
+html, body {
+	height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+	margin-bottom: -142px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.bottom-card-theme {
+  bottom: 0;
+}
+.site-footer {
+  background: orange;
+}
+
 .separator {
     border: 0;
     height: 1px;
@@ -1069,7 +1084,7 @@ content: '\f104';
 
 @media screen and (min-width: 1408px) {}
 
-@media screen and (max-width: 768 px) {}
+@media screen and (max-width: 768px) {}
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {}
 

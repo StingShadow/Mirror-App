@@ -319,4 +319,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->plainPassword = $plainPassword;
     }
+
+    public function __toString()
+    {
+        return "";
+    }
 }
