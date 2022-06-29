@@ -27,10 +27,10 @@ class HomeController extends AbstractController
         };
 
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/index2.html.twig', [
             'controller_name' => 'HomeController',
-            'themes' => $array1,
-            'themeSup' => $array2
+           // 'themes' => $array1,
+          //  'themeSup' => $array2
         ]);
     }
 

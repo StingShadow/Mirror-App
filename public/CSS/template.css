@@ -71,15 +71,6 @@
   color: #fff;
 }
 
-.dataTables_wrapper .dataTables_length select {
-  border: 1px solid #e54c4c;
-  border-radius: 3px;
-  padding: 5px;
-  background-color: transparent;
-  padding: 4px;
-}
-
-
 /* Mostly: http://ryanfait.com/sticky-footer/ */
 
 * {
@@ -1355,13 +1346,11 @@ content: '\f104';
       /* Boutons next & previous */
       .prev, .next {
       cursor: pointer;
-      position: absolute;
       top: 50%;
       width: auto;
       padding: 16px;
       margin-top: -22px;
       color: white;
-      font-weight: bold;
       font-size: 18px;
       transition: 0.6s ease;
       border-radius: 0 3px 3px 0;
@@ -1434,4 +1423,37 @@ content: '\f104';
 
 
       
+      .map__image {
+        width: 50%;
+
+        float:left;
+      }
+
+      .map__image path{
+        fill:rgba(50, 50, 50, 0.75);
+        stroke:rgba(255, 255, 255, .5);
+        stroke-width: 1px;
+        transition: fill 0.3s;
+
+      }
       
+      .map__image path:hover{
+        fill:rgba(50, 50, 50, 0.75);
+        stroke:rgba(255, 255, 255, .5);
+        stroke-width: 1px;
+        transition: fill 0.3s;
+
+      }
+
+      .map__list{
+        float: right;
+        width: 50%;
+      }
+
+      .map__list a{
+        color: inherit;
+
+        text-decoration: none;
+
+        transition: color 0.3s;
+      }
